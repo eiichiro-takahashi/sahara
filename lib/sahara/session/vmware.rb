@@ -12,21 +12,6 @@ module Sahara
         end
       end
 
-      def determine_vmwarecmd
-        if osx?
-          return "/Applications/VMware\\ Fusion.app/Contents/Library/vmrun"
-        else
-          raise Sahara::Errors::HostOsNotSupported
-        end
-      end
-
-      def osx?
-        %W[darwin].each do |text|
-          return true if RbConfig::CONFIG["host_os"].downcase.include?(text)
-        end
-        false
-      end
-
       def list_snapshots
         output = `#{@vmwarecmd} listSnapshots "#{@vmx_path}"`
         output.rstrip.split(/\r?\n/).map {|line| line.chomp }
