@@ -13,3 +13,5 @@ en:
         Error while creating snapshot: %{error_message}
       snapshot_reversion_error: |-
         Error while reverting snapshot: %{error_message}
+      host_os_not_supported: |-
+        Sahara does not support this host os.
